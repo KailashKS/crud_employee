@@ -1,12 +1,12 @@
 # crud_employee
 A basic Django employee CRUD web application.
 
-Made by-
- Kailash Karthik Sekhar (BT18GCS039)
+Made by-<br/>
+ Kailash Karthik Sekhar (BT18GCS039)<br/><br/>
 
-Tech Stack Used-
-  Languages used - Python, HTML
-  Framework - Django
-  Database - Postgresql
+Tech Stack Used-<br/>
+  Languages used - Python, HTML<br/>
+  Framework - Django<br/>
+  Database - Postgresql<br/><br/>
 
 *Added requirements.txt
