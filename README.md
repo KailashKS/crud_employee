@@ -1,4 +1,4 @@
-# crud_employee
+# Basic CRUD Employee Management
 A basic Django employee CRUD web application.
 
 Made by-<br/>
