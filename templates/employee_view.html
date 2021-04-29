@@ -1,0 +1,61 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+{% load humanize %}
+	<p class="text-center display-3 pb-5">Employee List</p>
+	
+
+	<table class="table table-striped text-white text-center">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Date of Birth</th>
+				<th>Gender</th>
+				<th>Passed All Evaluations?*</th>
+				<th>Salary</th>
+				<th>Department</th>
+				<th>Employer's Remarks</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+
+		{% for i in emp_details %}
+
+			<tr>
+                <td>
+                    <img src="{{ i.img.url }}" alt=""
+                        class="card-img-top" height="100px" style="height: 100px;width: 100px;">
+                </td>
+				<td>{{i.name}}</td>
+				<td>{{i.dob}}</td>
+				<td>{{i.gender}}</td>
+				<td>
+					{% if i.eval|length == 15 %}
+						Yes
+					{% else %}
+						No
+					{% endif %}
+
+				</td>
+				<td>₹{{i.salary|intcomma}}</td>
+				<td>{{i.dept}}</td>
+				<td>{{i.remarks}}</td>
+				<td><i class="fas fa-edit" style="color: rgb(160, 150, 150);"></i></td>
+				<td>
+					<a href="{% url 'emp_delete' %}">
+						<i class="fas fa-trash-alt" style="color: rgb(175, 54, 54);"></i>
+					</a>
+				</td>
+			</tr>
+
+		{% endfor %}
+	</table>
+	<div class="text-center">	
+		<a href="{% url 'emp_insert' %}" class="btn btn-lg btn-outline-primary">Add Employee</a>
+	</div>
+	
+
+{% endblock %}

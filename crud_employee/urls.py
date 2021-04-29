@@ -25,4 +25,4 @@ urlpatterns = [
     path('', include('emp_details.urls'))
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
