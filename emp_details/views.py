@@ -21,7 +21,9 @@ class EmployeeInsert(CreateView):
         form = EmpForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('emp_insert')
+            return redirect('emp_insert')
+        else:
+            return render(request, 'error.html')
 
     def get(self, request):
         form = EmpForm()
@@ -42,7 +44,10 @@ class EmployeeDelete(DeleteView):
 
 
 class EmployeeUpdate(UpdateView):
+
     model = Employee
+    employee = Employee.objects.all()
+    extra_context = {'emp_details': employee}
     template_name = 'employee_update.html'
     form_class = EmpForm
     success_url = reverse_lazy('emp_view')

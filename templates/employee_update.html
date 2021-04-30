@@ -1,7 +1,7 @@
 <title>Employee Insert</title>
 {% extends 'base.html' %}
 <!-- {% load crispy_forms_tags %} -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {% block content %}
 <div class="container">
 	<p class="text-center display-3 pb-5">Update Employee</p>
@@ -10,7 +10,10 @@
 		<table class="table table-striped text-white">
 			<tr>
 				<td class="col-lg-6">Upload Image: </td>
-				<td class="col-lg-6">{{form.img}}</td>
+				<td>
+					{{form.img}}
+					<img src="{{ form.instance.img.url }}" alt="" style="height: 100px;width: 100px;" class="mt-2">
+				</td>
 			</tr>
 			<tr>
 				<td class="col-lg-6">Enter Name: </td>
@@ -18,7 +21,7 @@
 			</tr>
 			<tr>
 				<td class="col-lg-6">Enter Date of Birth: </td>
-				<td class="col-lg-6">{{form.dob}}</td>
+				<td class="col-lg-6">{{ form.dob }}</td>
 			</tr>
 			<tr>
 				<td class="col-lg-6">Enter Date of Joining: </td>
@@ -30,7 +33,9 @@
 			</tr>
 			<tr>
 				<td class="col-lg-6">Physical and Psych Evaluation: </td>
-				<td class="col-lg-6">{{form.eval}}</td>
+				<td class="col-lg-6">
+					{{form.eval}}
+				</td>
 			</tr>
 			<tr>
 				<td class="col-lg-6">Do you have insurance?: </td>

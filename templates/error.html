@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<div class="container text-center">
+		<p style="font-size: 20px;">
+			Age is less than 18 years. Please enter valid date of birth.
+		</p>
+		<a href="{% url 'emp_insert' %}" class="btn btn-danger btn-lg">Ok</a>
+	</div>
+
+
+{% endblock %}
