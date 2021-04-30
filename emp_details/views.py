@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import base64
 from django.core.files.storage import FileSystemStorage
 from .forms import EmpForm
-from django.views.generic import FormView, ListView, UpdateView, DeleteView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 from .models import Employee
 from django.urls import reverse_lazy
 
@@ -14,7 +14,7 @@ def base(request):
     return render(request, "base.html")
 
 
-class EmployeeInsert(FormView):
+class EmployeeInsert(CreateView):
     model = EmpForm()
 
     def post(self, request):
@@ -27,10 +27,6 @@ class EmployeeInsert(FormView):
         form = EmpForm()
         return render(request, 'employee_insert.html', context={'form': form})
 
-# def employee(request):
-#     form = EmpForm()
-#     return render(request, 'employee.html', {'form': form})
-
 
 class EmployeeView(ListView):
     def get(self, request):
@@ -40,8 +36,13 @@ class EmployeeView(ListView):
 
 
 class EmployeeDelete(DeleteView):
-    def get(self, request):
-        return HttpResponse("Hello World")
-    # def get(self, request, id=None):
-    #     Employee.objects.filter(id=id).delete()
-    #     return render(request, 'employee_view.html', context={'emp_details': employee, 'form': form})
+    model = Employee
+    template_name = 'employee_delete.html'
+    success_url = reverse_lazy('emp_view')
+
+
+class EmployeeUpdate(UpdateView):
+    model = Employee
+    template_name = 'employee_update.html'
+    form_class = EmpForm
+    success_url = reverse_lazy('emp_view')

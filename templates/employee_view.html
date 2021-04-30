@@ -1,3 +1,4 @@
+<title>Employee View</title>
 {% extends 'base.html' %} 
 
 {% block content %}
@@ -12,8 +13,10 @@
 				<th>Image</th>
 				<th>Name</th>
 				<th>Date of Birth</th>
+				<th>Date of Joining</th>
 				<th>Gender</th>
 				<th>Passed All Evaluations?*</th>
+				<th>Has Insurance?</th>
 				<th>Salary</th>
 				<th>Department</th>
 				<th>Employer's Remarks</th>
@@ -31,6 +34,7 @@
                 </td>
 				<td>{{i.name}}</td>
 				<td>{{i.dob}}</td>
+				<td>{{i.doj}}</td>
 				<td>{{i.gender}}</td>
 				<td>
 					{% if i.eval|length == 15 %}
@@ -38,14 +42,23 @@
 					{% else %}
 						No
 					{% endif %}
+				</td>
 
+				<td>
+					{% if i.insurance == True %}
+						Yes
+					{% else %}
+						No
+					{% endif %}
 				</td>
 				<td>₹{{i.salary|intcomma}}</td>
 				<td>{{i.dept}}</td>
 				<td>{{i.remarks}}</td>
-				<td><i class="fas fa-edit" style="color: rgb(160, 150, 150);"></i></td>
 				<td>
-					<a href="{% url 'emp_delete' %}">
+					<a href="{% url 'emp_update' pk=i.id %}"><i class="fas fa-edit" style="color: rgb(160, 150, 150);"></i></a>
+				</td>
+				<td>
+					<a href="{% url 'emp_delete' pk=i.id %}">
 						<i class="fas fa-trash-alt" style="color: rgb(175, 54, 54);"></i>
 					</a>
 				</td>

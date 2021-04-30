@@ -20,9 +20,5 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('addEmp', include('emp_details.urls')),
-    # path('showEmp', include('emp_details.urls')),
     path('', include('emp_details.urls'))
 ]
-
-
