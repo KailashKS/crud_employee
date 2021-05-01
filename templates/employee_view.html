@@ -4,10 +4,11 @@
 {% block content %}
 
 {% load humanize %}
+	
 	<p class="text-center display-3 pb-5">Employee List</p>
 	
-	<div class="text-center">
-		<table class="table table-striped text-white">
+	<div class="justify-content-center text-center">
+		<table class="table table-striped text-white text-center">
 			<thead>
 				<tr>
 					<th>Image</th>
@@ -70,11 +71,16 @@
 	
 			{% endfor %}
 		</table>
+		<div class="text-center">	
+			<a href="{% url 'emp_insert' %}" class="btn btn-lg btn-outline-primary">Add Employee</a>
+		</div>
 	</div>
-	
-	<div class="text-center">	
-		<a href="{% url 'emp_insert' %}" class="btn btn-lg btn-outline-primary">Add Employee</a>
-	</div>
+	<style>
+		.table {
+			margin-left: -10%;
+		}
+	</style>
+
 	
 
 {% endblock %}
