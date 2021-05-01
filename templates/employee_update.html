@@ -1,4 +1,4 @@
-<title>Employee Insert</title>
+<title>Employee Update</title>
 {% extends 'base.html' %}
 <!-- {% load crispy_forms_tags %} -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -35,11 +35,35 @@
 				<td class="col-lg-6">Physical and Psych Evaluation: </td>
 				<td class="col-lg-6">
 					{{form.eval}}
+					{% if '1' in form.eval.value %}
+						<script>
+						var temp = document.getElementById("id_eval_0").checked = true;
+						console.log(temp);
+						</script>
+					{% endif %}
+
+					{% if '2' in form.eval.value %}
+						<script>
+						var temp = document.getElementById("id_eval_1").checked = true;
+						console.log(temp);
+						</script>
+					{% endif %}
+
+					{% if '3' in form.eval.value %}
+					<script>
+					var temp = document.getElementById("id_eval_2").checked = true;
+					console.log(temp);
+					</script>
+					{% endif %}
 				</td>
 			</tr>
 			<tr>
 				<td class="col-lg-6">Do you have insurance?: </td>
 				<td class="col-lg-6">{{form.insurance}}</td>
+			</tr>
+			<tr>
+				<td class="col-lg-6">Enter no. of Dependants: </td>
+				<td class="col-lg-6">{{form.dependants}}</td>
 			</tr>
 			<tr>
 				<td class="col-lg-6">Enter Salary (in Rupees): </td>

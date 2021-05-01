@@ -6,66 +6,72 @@
 {% load humanize %}
 	<p class="text-center display-3 pb-5">Employee List</p>
 	
-
-	<table class="table table-striped text-white text-center">
-		<thead>
-			<tr>
-				<th>Image</th>
-				<th>Name</th>
-				<th>Date of Birth</th>
-				<th>Date of Joining</th>
-				<th>Gender</th>
-				<th>Passed All Evaluations?*</th>
-				<th>Has Insurance?</th>
-				<th>Salary</th>
-				<th>Department</th>
-				<th>Employer's Remarks</th>
-				<th>Update</th>
-				<th>Delete</th>
-			</tr>
-		</thead>
-
-		{% for i in emp_details %}
-
-			<tr>
-                <td>
-                    <img src="{{ i.img.url }}" alt=""
-                        class="card-img-top" style="height: 100px;width: 100px;">
-                </td>
-				<td>{{i.name}}</td>
-				<td>{{i.dob}}</td>
-				<td>{{i.doj}}</td>
-				<td>{{i.gender}}</td>
-				<td>
-					{% if i.eval|length == 15 %}
-						Yes
-					{% else %}
-						No
-					{% endif %}
-				</td>
-
-				<td>
-					{% if i.insurance == True %}
-						Yes
-					{% else %}
-						No
-					{% endif %}
-				</td>
-				<td>₹{{i.salary|intcomma}}</td>
-				<td>{{i.dept}}</td>
-				<td>{{i.remarks}}</td>
-				<td>
-					<a href="{% url 'emp_update' pk=i.id %}"><i class="fas fa-edit" style="color: rgb(160, 150, 150);"></i></a>
-				</td>
-				<td>
-					<a href="{% url 'emp_delete' pk=i.id %}">
-						<i class="fas fa-trash-alt" style="color: rgb(175, 54, 54);"></i>
-					</a>
-				</td>
-			</tr>
-
-		{% endfor %}
-	</table>
+	<div class="text-center">
+		<table class="table table-striped text-white">
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Date of Birth</th>
+					<th>Date of Joining</th>
+					<th>Gender</th>
+					<th>Age</th>
+					<th>Passed All Evaluations?*</th>
+					<th>Has Insurance?</th>
+					<th>No. of Dependants</th>
+					<th>Salary</th>
+					<th>Department</th>
+					<th>Employer's Remarks</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+	
+			{% for i in emp_details %}
+	
+				<tr>
+					<td>
+						<img src="{{ i.img.url }}" alt=""
+							class="card-img-top" style="height: 100px;width: 100px;">
+					</td>
+					<td>{{i.name}}</td>
+					<td>{{i.dob}}</td>
+					<td>{{i.doj}}</td>
+					<td>{{i.gender}}</td>
+					<td>{{i.age}}</td>
+					<td>
+						{% if i.eval|length == 15 %}
+							Yes
+						{% else %}
+							No
+						{% endif %}
+					</td>
+	
+					<td>
+						{% if i.insurance == True %}
+							Yes
+						{% else %}
+							No
+						{% endif %}
+					</td>
+					<td>{{i.dependants}}</td>
+					<td>₹{{i.salary|intcomma}}</td>
+					<td>{{i.dept}}</td>
+					<td>{{i.remarks}}</td>
+					<td>
+						<a href="{% url 'emp_update' pk=i.id %}"><i class="fas fa-edit" style="color: rgb(160, 150, 150);"></i></a>
+					</td>
+					<td>
+						<a href="{% url 'emp_delete' pk=i.id %}">
+							<i class="fas fa-trash-alt" style="color: rgb(175, 54, 54);"></i>
+						</a>
+					</td>
+				</tr>
+	
+			{% endfor %}
+		</table>
+	</div>
+	
 	<div class="text-center">	
 		<a href="{% url 'emp_insert' %}" class="btn btn-lg btn-outline-primary">Add Employee</a>
 	</div>

@@ -1,9 +1,8 @@
 from django.db import models
 from django import forms
-from django.utils import timezone
-from datetime import datetime
-from django.db.models import F, Q
+from datetime import datetime, date
 from django.contrib import messages
+from django.utils.timezone import timezone
 
 # Create your models here.
 
@@ -20,8 +19,12 @@ class Employee(models.Model):
     salary = models.FloatField(default=0.0)
     dept = models.TextField()
     remarks = models.TextField()
+    dependants = models.PositiveIntegerField(default=0)
+
 
     def clean(self):
         import datetime
         if not (datetime.date.today() - self.dob) > datetime.timedelta(days=18*365):
             raise forms.ValidationError('Age less than 18')
+        if self.dependants < 0:
+            raise forms.ValidationError('Dependants cannot be less than 0')

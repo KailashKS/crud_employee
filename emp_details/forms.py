@@ -41,7 +41,7 @@ class EmpForm(forms.ModelForm):
             'doj': forms.DateInput(
                 attrs={'type': 'date', 'required': True}),
             'eval': forms.CheckboxSelectMultiple(choices=eval_check, attrs={'class': "custom-list"}),
-            'insurance': forms.RadioSelect(choices=ins_check, attrs={'class': "custom-list"}),
+            'insurance': forms.Select(choices=ins_check, attrs={'class': "custom-list"}),
             'dept': forms.Select(choices=dept_choices),
             'gender': forms.RadioSelect(choices=genderChoices, attrs={'class': "custom-list"}),
             'remarks': forms.Textarea(attrs={'style': 'height: 50px;width:150px;', 'required': True})

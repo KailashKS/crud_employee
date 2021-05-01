@@ -32,9 +32,9 @@ class EmployeeInsert(CreateView):
 
 class EmployeeView(ListView):
     def get(self, request):
-        form = EmpForm()
+        # form = EmpForm()
         employee = Employee.objects.all()
-        return render(request, 'employee_view.html', context={'emp_details': employee, 'form': form})
+        return render(request, 'employee_view.html', context={'emp_details': employee})
 
 
 class EmployeeDelete(DeleteView):
@@ -44,7 +44,6 @@ class EmployeeDelete(DeleteView):
 
 
 class EmployeeUpdate(UpdateView):
-
     model = Employee
     employee = Employee.objects.all()
     extra_context = {'emp_details': employee}
