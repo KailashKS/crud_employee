@@ -71,8 +71,10 @@
 	
 			{% endfor %}
 		</table>
-		<div class="text-center">	
+		<div class="text-center">
+			<a href="{% url 'emp_home' %}" class="btn btn-lg btn-outline-success">Home</a>
 			<a href="{% url 'emp_insert' %}" class="btn btn-lg btn-outline-primary">Add Employee</a>
+			
 		</div>
 	</div>
 	<style>
